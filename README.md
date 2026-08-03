@@ -1,4 +1,4 @@
-# FYUST Robotics Laboratory Website
+# FYUST Aerial Robotics Lab Website
 
 This folder contains a simple, responsive homepage for a university robotics lab that is ready to be published on GitHub Pages.
 
