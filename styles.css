@@ -48,6 +48,7 @@ img {
 .brand {
   color: var(--text);
   font-weight: 700;
+  font-size: 1.3rem;
   text-decoration: none;
   letter-spacing: 0.04em;
 }
@@ -79,7 +80,15 @@ img {
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.eyebrow-large {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 1.6rem;
   color: var(--accent);
   margin-bottom: 0.5rem;
 }
