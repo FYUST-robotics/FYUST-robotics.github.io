@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const links = document.querySelectorAll('.nav-links a');
 
   links.forEach((link) => {
-    link.addEventListener('click', () => {
-      links.forEach((item) => item.classList.remove('active'));
+    const href = link.getAttribute('href') || '';
+    if (href && currentPath.endsWith(href)) {
       link.classList.add('active');
-    });
+    }
   });
 });
