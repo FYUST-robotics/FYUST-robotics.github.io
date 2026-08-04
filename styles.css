@@ -164,6 +164,48 @@ h1 {
   margin-bottom: 2rem;
 }
 
+.publication-list-section {
+  margin-top: 1rem;
+}
+
+.publication-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.publication-item {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.publication-item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.publication-item p {
+  margin: 0.25rem 0;
+  color: var(--muted);
+}
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.publication-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.publication-links a:hover {
+  color: var(--text);
+}
+
 .contact-card {
   max-width: 600px;
 }
