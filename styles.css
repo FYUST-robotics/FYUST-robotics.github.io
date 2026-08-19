@@ -164,6 +164,37 @@ h1 {
   margin-bottom: 2rem;
 }
 
+.intro-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.intro-copy {
+  min-width: 0;
+}
+
+.intro-product-figure {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(79, 209, 197, 0.18), rgba(124, 147, 255, 0.22));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 280px;
+  transform: translateY(30px);
+}
+
+.intro-product-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .publication-list-section {
   margin-top: 1rem;
 }
@@ -318,9 +349,24 @@ h1 {
   font-size: 0.95rem;
 }
 
+<!-- project page styles-->
+.project-content-section-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.project-content-section-description {
+    max-width: 900px;
+    font-size: 17px;
+}
+
+
+
+
 @media (max-width: 800px) {
   .hero-content,
-  .card-grid {
+  .card-grid,
+  .intro-layout {
     grid-template-columns: 1fr;
   }
 
@@ -328,6 +374,12 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+  }
+
+  .intro-product-figure {
+    min-height: 220px;
+    width: min(100%, 460px);
+    margin: 0 auto;
   }
 
   .project-item,
