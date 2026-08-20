@@ -425,7 +425,32 @@ h1 {
     width: 90%;
 }
 
+/* =========================
+    FEATURES
+    ========================= */
 
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.feature {
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.feature h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.feature p {
+    color: #666;
+}
 
 
 @media (max-width: 800px) {
@@ -483,5 +508,13 @@ h1 {
   .project-link {
     align-self: stretch;
     text-align: center;
+  }
+
+  .features {
+      grid-template-columns: 1fr;
+  }
+
+  .metrics {
+      grid-template-columns: repeat(1, 1fr);
   }
 }
