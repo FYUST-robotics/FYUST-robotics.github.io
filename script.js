@@ -2,16 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const links = document.querySelectorAll('.nav-links a');
 
+  // Highlight the active nav link based on the current page filename.
+  // This works for both root pages and pages under zh/ (hrefs may include ../ or zh/ prefixes).
   links.forEach((link) => {
     const href = link.getAttribute('href') || '';
-    if (href && currentPath.endsWith(href)) {
+    const hrefFile = href.split('/').pop();
+    if (hrefFile && currentPath === hrefFile) {
       link.classList.add('active');
     }
   });
 
-  // Language switcher: toggle document language and persist choice
   const langSwitch = document.getElementById('lang-switch');
-  const savedLang = localStorage.getItem('siteLang');
+  if (!langSwitch) return;
+
+  // Each page's language switch carries the counterpart URLs:
+  // - data-en-href: relative link to the English version of THIS page
+  // - data-zh-href: relative link to the Chinese version of THIS page
+  // index.html has neither (it translates its content in place), so enHref === zhHref
+  // is treated as "no separate counterpart" and the page toggles in place.
+  const enHref = langSwitch.getAttribute('data-en-href');
+  const zhHref = langSwitch.getAttribute('data-zh-href');
+  const hasCounterpart = !!(enHref && zhHref && enHref !== zhHref);
 
   const navTranslations = {
     'index.html': { en: 'Home', zh: '主页' },
@@ -20,12 +31,33 @@ document.addEventListener('DOMContentLoaded', () => {
     'contact.html': { en: 'Contact', zh: '联系' },
   };
 
+  function setKnobState(lang) {
+    if (lang === 'zh') {
+      langSwitch.classList.add('is-zh');
+      langSwitch.setAttribute('aria-pressed', 'true');
+    } else {
+      langSwitch.classList.remove('is-zh');
+      langSwitch.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  // Update nav link text for the selected language (used on index.html).
   function updateNavText(lang) {
     links.forEach((link) => {
-      const href = link.getAttribute('href') || '';
-      if (navTranslations[href]) {
-        link.textContent = navTranslations[href][lang] || link.textContent;
+      const key = link.getAttribute('data-en') || link.getAttribute('href') || '';
+      // Normalize keys like "zh/projects.html" or "../projects.html" to "projects.html".
+      const norm = key.replace(/^(\.\.\/)+/, '').replace(/^(zh\/)?/, '');
+      if (navTranslations[norm]) {
+        link.textContent = navTranslations[norm][lang] || link.textContent;
       }
+    });
+  }
+
+  // Swap link hrefs between the English and Chinese versions (used on index.html).
+  function updateNavLinks(lang) {
+    document.querySelectorAll('[data-en][data-zh]').forEach((el) => {
+      const target = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+      el.setAttribute('href', target);
     });
   }
 
@@ -64,24 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setLang(lang) {
     document.documentElement.lang = lang;
-    if (langSwitch) {
-      if (lang === 'zh') {
-        langSwitch.classList.add('is-zh');
-        langSwitch.setAttribute('aria-pressed', 'true');
-      } else {
-        langSwitch.classList.remove('is-zh');
-        langSwitch.setAttribute('aria-pressed', 'false');
-      }
-    }
+    setKnobState(lang);
     updateNavText(lang);
+    updateNavLinks(lang);
     updateContentText(lang);
     localStorage.setItem('siteLang', lang);
   }
 
-  if (langSwitch) {
-    // Prefer a stored preference, otherwise default to English on the index page
-    const initial = savedLang || 'en';
-    setLang(initial);
+  if (hasCounterpart) {
+    // Static per-language pages (projects, publications, contact, project detail, ...).
+    // Keep the stored preference in sync with the current page and navigate on toggle.
+    const pageLang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
+    localStorage.setItem('siteLang', pageLang);
+    setKnobState(pageLang);
+    langSwitch.addEventListener('click', () => {
+      const current = document.documentElement.lang === 'zh' ? 'zh' : 'en';
+      const next = current === 'en' ? 'zh' : 'en';
+      const target = next === 'zh' ? zhHref : enHref;
+      localStorage.setItem('siteLang', next);
+      window.location.href = target;
+    });
+  } else {
+    // index.html: translate content in place and point links at the zh/ pages.
+    const savedLang = localStorage.getItem('siteLang');
+    setLang(savedLang || 'en');
     langSwitch.addEventListener('click', () => {
       const next = document.documentElement.lang === 'en' ? 'zh' : 'en';
       setLang(next);

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高性能CAAC训练无人机 | 福耀科技大学空中机器人实验室</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a href="../../index.html" class="brand">福耀科技大学 空中机器人实验室</a>
+        <div class="nav-links">
+          <a href="../../index.html">主页</a>
+          <a href="../projects.html">项目</a>
+          <a href="../publications.html">论文</a>
+          <a href="../contact.html">联系</a>
+          <button id="lang-switch" class="lang-toggle" aria-label="Switch language" aria-pressed="true" data-en-href="../../projects/project-caac-drone.html" data-zh-href="projects/project-caac-drone.html">
+            <span class="lang-option lang-zh">中文</span>
+            <span class="lang-option lang-en">EN</span>
+            <span class="lang-knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-content container">
+      <section class="page-intro intro-layout">
+        <div class="intro-copy">
+          <p class="eyebrow">项目</p>
+          <h1>高性能CAAC训练无人机</h1>
+        </div>
+
+        <figure class="intro-product-figure">
+          <img src="../../assets/caac_platform.png" alt="CAAC训练无人机平台" />
+        </figure>
+      </section>
+
+        <!--概述部分-->
+        <h2 class="project-content-section-title">
+            项目概述
+        </h2>
+        <p class="project-content-section-description">
+            高性能飞行控制器对于工业无人机应用至关重要，能够在复杂运行条件下实现精确、可靠、
+            实时的控制。对于符合CAAC规范的训练，用户友好操作、增强的安全保障以及强抗风能力的
+            需求，使得高性能飞行控制系统的开发更具挑战性。为此，我们团队为CAAC训练无人机开发了
+            完全定制化的飞行控制系统，具有高飞行稳定性和卓越的悬停精度，可在最高10米/秒的
+            风速扰动下保持稳定。
+        </p>
+
+        <!--核心能力部分-->
+        <h2 class="project-content-section-title">
+            核心能力
+        </h2>
+
+       <div class="features">
+            <div class="feature">
+                <h3>RTK定位</h3>
+                <p>
+                    通过RTK（实时动态差分）模块实现厘米级定位精度。
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>悬停锁定</h3>
+                <p>
+                    悬停与快速旋转过程中卓越的位置保持精度。
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>免手持安全保障</h3>
+                <p>
+                    高度与位置模式之间的平滑切换，双手脱离时即时触发故障保护。
+                </p>
+            </div>
+        </div>
+
+        <!--性能指标部分-->
+        <h2 class="project-content-section-title">
+            性能指标
+        </h2>
+
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">
+                    ± 0.1m
+                </div>
+
+                <div class="metric-label">
+                    悬停精度
+                    （抗最高10米/秒风速扰动）
+                </div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-value">
+                    ± 0.15m
+                </div>
+                <div class="metric-label">
+                    快速旋转时的位置保持精度（抗最高10米/秒风速扰动）
+                </div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-value">
+                    5kg
+                </div>
+                <div class="metric-label">
+                    最大载荷（原型机器）
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--演示视频部分-->
+        <h2 class="project-content-section-title">
+            演示视频
+        </h2>
+
+        <p class="project-content-section-description">
+            以下视频展示了高飞行稳定性、在风扰动下的精确悬停精度以及流畅的用户操作。点击任意视频开始播放。
+        </p>
+
+        <div class="demo-videos-grid">
+            <figure class="demo-video-card">
+                <video controls preload="none" poster="../../assets/demo-poster-1.svg">
+                    <source src="../../uploads/videos/demo-1.mp4" type="video/mp4" />
+                    您的浏览器不支持视频标签。
+                </video>
+                <figcaption class="demo-video-caption">抗风扰动测试</figcaption>
+            </figure>
+
+            <figure class="demo-video-card">
+                <video controls preload="none" poster="../../assets/demo-poster-2.svg">
+                    <source src="../../uploads/videos/demo-2.mp4" type="video/mp4" />
+                    您的浏览器不支持视频标签。
+                </video>
+                <figcaption class="demo-video-caption">10米/秒风扰动下的精确悬停</figcaption>
+            </figure>
+
+            <figure class="demo-video-card">
+                <video controls preload="none" poster="../../assets/demo-poster-3.svg">
+                    <source src="../../uploads/videos/demo-3.mp4" type="video/mp4" />
+                    您的浏览器不支持视频标签。
+                </video>
+                <figcaption class="demo-video-caption">真实场景外场作业</figcaption>
+            </figure>
+        </div>
+
+
+        <!--相关论文部分-->
+        <h2 class="project-content-section-title">
+            相关论文
+        </h2>
+
+        <div class="publication">
+            <div class="publication-title">
+                System Identification of Multi-Rotor UAV Attitude Dynamics with Direct Model-Based Excitation
+            </div>
+            <div class="publication-meta">
+                Y. Ke,
+                Proceedings of the 2026 IEEE 20th International Conference on Control & Automation (ICCA), Almaty, Kazakhstan
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© 2026 福耀科技大学空中机器人实验室</p>
+        <p><a href="../projects.html" class="btn btn-secondary">返回项目列表</a></p>
+      </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>
