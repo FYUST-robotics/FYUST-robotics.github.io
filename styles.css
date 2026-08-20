@@ -45,6 +45,60 @@ img {
   padding: 1.25rem 0;
 }
 
+/* Language toggle (slider shape) placed in the nav */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 88px;
+  height: 34px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.lang-toggle .lang-option {
+  flex: 1 1 50%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  z-index: 1;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.lang-toggle .lang-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 40px;
+  height: calc(100% - 8px);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 999px;
+  transition: transform 180ms ease;
+}
+
+.lang-toggle.is-zh .lang-knob {
+  transform: translateX(44px);
+}
+
+.lang-toggle.is-zh .lang-option.lang-zh {
+  color: var(--text);
+}
+
+.lang-toggle:not(.is-zh) .lang-option.lang-en {
+  color: var(--text);
+}
+
 .brand {
   color: var(--text);
   font-weight: 700;
