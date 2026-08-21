@@ -436,13 +436,15 @@ h1 {
     backdrop-filter: blur(8px);
 }
 
-.demo-video-card video {
+.demo-video-card video,
+.demo-video-card iframe {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     background: #000;
     cursor: pointer;
+    border: 0;
 }
 
 .demo-video-caption {
